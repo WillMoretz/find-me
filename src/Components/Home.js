@@ -12,7 +12,6 @@ function Home() {
             <img src={value.src} alt="something" />
             <p>{`${value.name}`}</p>
           </Link>
-          <button type="button">Show Leaderboard</button>
         </div>
       ))}
     </section>
