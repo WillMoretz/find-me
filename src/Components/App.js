@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Game from "./Game";
 import Home from "./Home";
+import "../styles/reset.css";
 
 function App() {
   return (
