@@ -6,16 +6,13 @@ import "../styles/home.scoped.css";
 function Home() {
   return (
     <section>
-      <div>
-        <img src={images.GOLD_RUSH.src} alt="the gold rush where's waldo" />
-        <Link to="/gold-rush">Play</Link>
-        <button type="button">Show Leaderboard</button>
-      </div>
-      <div>
-        <img src={images.HEDGE_MAZE.src} alt="the gold rush where's waldo" />
-        <Link to="/hedge-maze">Play</Link>
-        <button type="button">Show Leaderboard</button>
-      </div>
+      {Object.values(images).map((value) => (
+        <div key={`homepage${value.src}${value.path}`}>
+          <img src={value.src} alt="something" />
+          <Link to={value.path}>Link</Link>
+          <button type="button">Show Leaderboard</button>
+        </div>
+      ))}
     </section>
   );
 }
