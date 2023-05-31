@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import Game from "./Game";
 import Home from "./Home";
+import * as images from "../pages";
 import "../styles/reset.css";
 
 function App() {
@@ -11,8 +12,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/gold-rush" element={<Game />} />
-        <Route path="/hedge-maze" element={<Game />} />
+        <Route path={images.GOLD_RUSH.path} element={<Game />} />
+        <Route path={images.HEDGE_MAZE.path} element={<Game />} />
       </Routes>
     </>
   );

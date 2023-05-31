@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import goldRush from "../img/gold-rush.jpg";
-import hedgeMaze from "../img/hedge-maze.jpg";
+import * as images from "../pages";
 
 function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
 
   useEffect(() => {
-    if (location.pathname === "/gold-rush") setImgSrc(goldRush);
-    else if (location.pathname === "/hedge-maze") setImgSrc(hedgeMaze);
+    if (location.pathname === images.GOLD_RUSH.path)
+      setImgSrc(images.GOLD_RUSH.src);
+    else if (location.pathname === images.HEDGE_MAZE.path)
+      setImgSrc(images.HEDGE_MAZE.src);
   }, []);
 
   return imgSrc ? (
