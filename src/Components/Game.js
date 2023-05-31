@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import goldRush from "../img/gold-rush.jpg";
+import hedgeMaze from "../img/hedge-maze.jpg";
 
 function Game() {
   const location = useLocation();
@@ -8,6 +9,7 @@ function Game() {
 
   useEffect(() => {
     if (location.pathname === "/gold-rush") setImgSrc(goldRush);
+    else if (location.pathname === "/hedge-maze") setImgSrc(hedgeMaze);
   }, []);
 
   return imgSrc ? (
