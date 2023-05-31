@@ -10,7 +10,7 @@ function Home() {
         <div key={`homepage${value.src}${value.path}`}>
           <Link to={value.path}>
             <img src={value.src} alt="something" />
-            <p>Link</p>
+            <p>{`Play: ${value.name}`}</p>
           </Link>
           <button type="button">Show Leaderboard</button>
         </div>
