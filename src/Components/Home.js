@@ -9,8 +9,8 @@ function Home() {
       {Object.values(images).map((value) => (
         <div key={`homepage${value.src}${value.path}`}>
           <Link to={value.path}>
-            <p>{`${value.name}`}</p>
             <img src={value.src} alt="something" />
+            <p>{`${value.name}`}</p>
           </Link>
           <button type="button">Show Leaderboard</button>
         </div>
