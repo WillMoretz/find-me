@@ -1,8 +1,8 @@
 section {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, auto));
-  /* padding: 2rem;
-  gap: 2rem; */
+  padding: 2rem;
+  gap: 2rem;
 }
 
 div {
@@ -10,7 +10,7 @@ div {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+  box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
 }
 
 a {
