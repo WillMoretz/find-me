@@ -12,12 +12,15 @@ function Info(props) {
   return (
     <div className="info-container">
       <div className="top-bar">
-        <h2>Info</h2>
+        <h2>How To Play</h2>
         <button type="button" onClick={() => passUpClick()}>
-          Close
+          ✕
         </button>
       </div>
-      <p>explanation</p>
+      <p>
+        Where's Waldo is a game where you must find Waldo somewhere inside of a
+        picture to win. When you find Waldo, tap or click on him.
+      </p>
       <img src={waldo} alt="waldo" />
     </div>
   );
