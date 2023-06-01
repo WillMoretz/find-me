@@ -1,4 +1,5 @@
 import React from "react";
+import waldo from "../img/waldo.webp";
 
 function Info() {
   return (
@@ -8,7 +9,7 @@ function Info() {
         <button type="button">Close</button>
       </div>
       <p>explanation</p>
-      <div>image of waldo</div>
+      <img src={waldo} alt="waldo" />
     </div>
   );
 }
