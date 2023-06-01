@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./Header";
 import Game from "./Game";
 import Home from "./Home";
@@ -8,9 +8,15 @@ import * as images from "../pages";
 import "../styles/reset.css";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
-      <Header />
+      {location.pathname === "/" || location.pathname === "/leaderboard" ? (
+        <Header />
+      ) : (
+        ""
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
