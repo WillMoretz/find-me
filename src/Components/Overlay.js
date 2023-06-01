@@ -8,7 +8,7 @@ function Overlay(props) {
     handleClick();
   }
 
-  return <div onClick={() => passUpClick()} />;
+  return <div onClick={() => passUpClick()} aria-hidden />;
 }
 
 export default Overlay;
