@@ -1,4 +1,5 @@
 div {
+  position: fixed;
   inset: 0;
   z-index: 9990;
   background-color: rgba(0, 0, 0, 0.5);
