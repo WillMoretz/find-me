@@ -7,17 +7,27 @@ import "../styles/header.scoped.css";
 function Header() {
   const [shouldDisplayInfo, setShouldDisplayInfo] = useState(false);
 
+  function handleClick() {
+    setShouldDisplayInfo(true);
+  }
+
   return (
     <>
       <header>
         <h1>Where's Waldo Online</h1>
         <Link to="/leaderboard">Leaderboard</Link>
-        <button type="button">Info</button>
+        <button type="button" onClick={() => handleClick()}>
+          Info
+        </button>
       </header>
-      <>
-        <Info />
-        <Overlay />
-      </>
+      {shouldDisplayInfo ? (
+        <>
+          <Info />
+          <Overlay />
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 }
