@@ -5,12 +5,19 @@ section {
   gap: 2rem;
 }
 
+div,
+img {
+  border-radius: 16px;
+}
+
 div {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.3) 0 4px 12px;
+  background-color: red;
+  border: 3px dashed white;
   height: min-content;
 }
 
