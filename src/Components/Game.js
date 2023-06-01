@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import "../styles/game.scoped.css";
 import * as images from "../pages";
 
 function Game() {
