@@ -11,6 +11,10 @@ function Header() {
     setShouldDisplayInfo(true);
   }
 
+  const handleCloseInput = () => {
+    setShouldDisplayInfo(false);
+  };
+
   return (
     <>
       <header>
@@ -22,8 +26,8 @@ function Header() {
       </header>
       {shouldDisplayInfo ? (
         <>
-          <Info />
-          <Overlay />
+          <Info handleClick={handleCloseInput} />
+          <Overlay handleClick={handleCloseInput} />
         </>
       ) : (
         ""
