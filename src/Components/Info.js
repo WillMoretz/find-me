@@ -1,5 +1,6 @@
 import React from "react";
 import waldo from "../img/waldo.webp";
+import "../styles/info.scoped.css";
 
 function Info(props) {
   const { handleClick } = props;
