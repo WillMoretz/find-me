@@ -7,6 +7,30 @@ function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
 
+  // Scroll Image by Dragging Mouse
+  useEffect(() => {
+    const onMouseMove = (e) => {
+      console.info("mousemove", e);
+    };
+    const onMouseUp = (e) => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+    const onMouseDown = (e) => {
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseup", onMouseUp);
+    };
+
+    window.addEventListener("mousedown", onMouseDown);
+
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("mousemove", onMouseMove);
+    };
+  }, []);
+
+  // Load Image
   useEffect(() => {
     if (location.pathname === images.GOLD_RUSH.path)
       setImgSrc(images.GOLD_RUSH.src);
@@ -15,7 +39,11 @@ function Game() {
   }, []);
 
   return imgSrc ? (
-    <img src={imgSrc} alt="A Where's Waldo Drawing" />
+    <img
+      src={imgSrc}
+      alt="A Where's Waldo Drawing"
+      onDragStart={(e) => e.preventDefault()}
+    />
   ) : (
     <div>loading image...</div>
   );
