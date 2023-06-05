@@ -12,15 +12,27 @@ const allWaldoCoordinates = {
 function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
-  const [waldCoordinates, setWaldoCoordinates] = useState({});
+  const [waldoXCoordinates, setWaldoXCoordinates] = useState([]);
+  const [waldoYCoordinates, setWaldoYCoordinates] = useState([]);
 
   // Scroll Image by Dragging Mouse
+  // Determine whether user clicked on Waldo
   useEffect(() => {
     const element = document.querySelector("section");
     let pos = { top: 0, left: 0, x: 0, y: 0 };
     // const isCorrect = false;
 
-    // function validateClickPosition(x, y) {}
+    // function validateClickPosition(x, y) {
+    //   console.log("checking click...");
+    //   if (
+    //     x >= waldoXCoordinates[0] &&
+    //     x <= waldoXCoordinates[1] &&
+    //     y >= waldoYCoordinates[0] &&
+    //     y <= waldoYCoordinates[1]
+    //   )
+    //     console.log("waldo click");
+    //   else console.log("not here");
+    // }
 
     const onMouseMove = (e) => {
       e.preventDefault();
@@ -45,6 +57,7 @@ function Game() {
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
       // console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
+      // validateClickPosition(e.clientX, e.clientY);
     };
 
     window.addEventListener("mousedown", onMouseDown);
@@ -56,14 +69,17 @@ function Game() {
     };
   }, []);
 
-  // Load Image and Waldo Coordinates
+  // Load Image
+  // Load Waldo Coordinates
   useEffect(() => {
     if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
-      setWaldoCoordinates(allWaldoCoordinates.goldRush);
+      setWaldoXCoordinates(allWaldoCoordinates.goldRush.x);
+      setWaldoYCoordinates(allWaldoCoordinates.goldRush.y);
     } else if (location.pathname === images.HEDGE_MAZE.path) {
       setImgSrc(images.HEDGE_MAZE.src);
-      setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
+      setWaldoXCoordinates(allWaldoCoordinates.hedgeMaze.x);
+      setWaldoYCoordinates(allWaldoCoordinates.hedgeMaze.y);
     }
   }, []);
 
