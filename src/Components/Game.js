@@ -22,17 +22,19 @@ function Game() {
     let pos = { top: 0, left: 0, x: 0, y: 0 };
     // const isCorrect = false;
 
-    // function validateClickPosition(x, y) {
-    //   console.log("checking click...");
-    //   if (
-    //     x >= waldoXCoordinates[0] &&
-    //     x <= waldoXCoordinates[1] &&
-    //     y >= waldoYCoordinates[0] &&
-    //     y <= waldoYCoordinates[1]
-    //   )
-    //     console.log("waldo click");
-    //   else console.log("not here");
-    // }
+    function validateClickPosition(x, y) {
+      console.log("checking click...");
+      // console.log(x, waldoXCoordinates);
+      // console.log(x > waldoXCoordinates[0]);
+      if (
+        x >= waldoXCoordinates[0] &&
+        x <= waldoXCoordinates[1] &&
+        y >= waldoYCoordinates[0] &&
+        y <= waldoYCoordinates[1]
+      )
+        console.log("waldo click");
+      else console.log("not here");
+    }
 
     const onMouseMove = (e) => {
       e.preventDefault();
@@ -57,7 +59,7 @@ function Game() {
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
       // console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
-      // validateClickPosition(e.clientX, e.clientY);
+      validateClickPosition(e.clientX, e.clientY);
     };
 
     window.addEventListener("mousedown", onMouseDown);
@@ -74,7 +76,11 @@ function Game() {
   useEffect(() => {
     if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
-      setWaldoXCoordinates(allWaldoCoordinates.goldRush.x);
+      console.log([...allWaldoCoordinates.goldRush.x]);
+      setWaldoXCoordinates([
+        ...waldoXCoordinates,
+        ...allWaldoCoordinates.goldRush.x,
+      ]);
       setWaldoYCoordinates(allWaldoCoordinates.goldRush.y);
     } else if (location.pathname === images.HEDGE_MAZE.path) {
       setImgSrc(images.HEDGE_MAZE.src);
