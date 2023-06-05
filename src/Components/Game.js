@@ -20,15 +20,16 @@ function Game() {
   useEffect(() => {
     const element = document.querySelector("section");
     let pos = { top: 0, left: 0, x: 0, y: 0 };
+    let relativePos = { x: 0, y: 0 };
     // const isCorrect = false;
 
-    function validateClickPosition(x, y) {
+    function validateClickPosition() {
       console.log("checking click...");
       if (
-        x >= waldoXCoordinates[0] &&
-        x <= waldoXCoordinates[1] &&
-        y >= waldoYCoordinates[0] &&
-        y <= waldoYCoordinates[1]
+        relativePos.x >= waldoXCoordinates[0] &&
+        relativePos.x <= waldoXCoordinates[1] &&
+        relativePos.y >= waldoYCoordinates[0] &&
+        relativePos.y <= waldoYCoordinates[1]
       )
         console.log("waldo click");
       else console.log("not here");
@@ -54,10 +55,14 @@ function Game() {
         x: e.clientX,
         y: e.clientY,
       };
+
+      const rect = e.target.getBoundingClientRect();
+      relativePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
-      console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
-      validateClickPosition(e.clientX, e.clientY);
+      // console.log(`pictureX: ${relativePos.x}`, `pictureY: ${relativePos.y}`);
+      validateClickPosition();
     };
 
     window.addEventListener("mousedown", onMouseDown);
