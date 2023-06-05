@@ -24,8 +24,6 @@ function Game() {
 
     function validateClickPosition(x, y) {
       console.log("checking click...");
-      // console.log(x, waldoXCoordinates);
-      // console.log(x > waldoXCoordinates[0]);
       if (
         x >= waldoXCoordinates[0] &&
         x <= waldoXCoordinates[1] &&
@@ -58,29 +56,30 @@ function Game() {
       };
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
-      // console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
+      console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
+      // console.log(waldoXCoordinates);
       validateClickPosition(e.clientX, e.clientY);
     };
 
     window.addEventListener("mousedown", onMouseDown);
 
     return () => {
-      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("mousemove", onMouseMove);
     };
-  }, []);
+  }, [waldoXCoordinates, waldoYCoordinates]);
 
   // Load Image
   // Load Waldo Coordinates
   useEffect(() => {
     if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
-      console.log([...allWaldoCoordinates.goldRush.x]);
-      setWaldoXCoordinates([
-        ...waldoXCoordinates,
-        ...allWaldoCoordinates.goldRush.x,
-      ]);
+      // setWaldoXCoordinates([
+      //   ...waldoXCoordinates,
+      //   ...allWaldoCoordinates.goldRush.x,
+      // ]);
+      setWaldoXCoordinates(allWaldoCoordinates.goldRush.x);
       setWaldoYCoordinates(allWaldoCoordinates.goldRush.y);
     } else if (location.pathname === images.HEDGE_MAZE.path) {
       setImgSrc(images.HEDGE_MAZE.src);
@@ -88,6 +87,10 @@ function Game() {
       setWaldoYCoordinates(allWaldoCoordinates.hedgeMaze.y);
     }
   }, []);
+
+  // useEffect(() => {
+  //   console.log(waldoXCoordinates);
+  // }, [waldoXCoordinates]);
 
   return (
     <section>
