@@ -3,6 +3,12 @@ import { useLocation } from "react-router-dom";
 import "../styles/game.scoped.css";
 import * as images from "../pages";
 
+// TODO: fetch this data from firebase
+const waldoCoordinates = {
+  hedgeMaze: { x: [415, 434], y: [166, 192] },
+  goldRush: { x: [185, 207], y: [132, 191] },
+};
+
 function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
@@ -10,17 +16,10 @@ function Game() {
   // Scroll Image by Dragging Mouse
   useEffect(() => {
     const element = document.querySelector("section");
-    // let pos = { startX: 0, startY: 0, scrollLeft: 0, scrollTop: 0 };
     let pos = { top: 0, left: 0, x: 0, y: 0 };
 
     const onMouseMove = (e) => {
       e.preventDefault();
-      // const dx = e.pageX - element.offsetLeft;
-      // const dy = e.clientY - element.offsetTop;
-      // console.log(dx, dy);
-      // element.scrollLeft = pos.scrollLeft - dx;
-      // element.scrollTop = pos.scrollTop - dy;
-      // console.log(element.scrollLeft, element.scrollTop);
       const dx = e.clientX - pos.x;
       const dy = e.clientY - pos.y;
       element.scrollTop = pos.top - dy;
@@ -33,14 +32,6 @@ function Game() {
     };
 
     const onMouseDown = (e) => {
-      // pos = {
-      //   startX: e.pageX - element.offsetLeft,
-      //   startY: e.pageY - element.offsetTop,
-      //   scrollLeft: element.scrollLeft,
-      //   scrollTop: element.scrollTop,
-      //   // x: pos.x,
-      //   // y: pos.y,
-      // };
       pos = {
         left: element.scrollLeft,
         top: element.scrollTop,
@@ -49,6 +40,7 @@ function Game() {
       };
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
+      console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
     };
 
     window.addEventListener("mousedown", onMouseDown);
