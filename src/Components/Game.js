@@ -40,7 +40,7 @@ function Game() {
       };
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
-      console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
+      // console.log(`mouseX: ${e.clientX}`, `mouseY: ${e.clientY}`);
     };
 
     window.addEventListener("mousedown", onMouseDown);
