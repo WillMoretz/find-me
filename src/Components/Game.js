@@ -12,8 +12,7 @@ const allWaldoCoordinates = {
 function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
-  const [waldoXCoordinates, setWaldoXCoordinates] = useState([]);
-  const [waldoYCoordinates, setWaldoYCoordinates] = useState([]);
+  const [waldoCoordinates, setWaldoCoordinates] = useState({});
 
   // Scroll Image by Dragging Mouse
   // Determine whether user clicked on Waldo
@@ -26,10 +25,10 @@ function Game() {
     function validateClickPosition() {
       console.log("checking click...");
       if (
-        relativePos.x >= waldoXCoordinates[0] &&
-        relativePos.x <= waldoXCoordinates[1] &&
-        relativePos.y >= waldoYCoordinates[0] &&
-        relativePos.y <= waldoYCoordinates[1]
+        relativePos.x >= waldoCoordinates.x[0] &&
+        relativePos.x <= waldoCoordinates.x[1] &&
+        relativePos.y >= waldoCoordinates.y[0] &&
+        relativePos.y <= waldoCoordinates.y[1]
       )
         console.log("waldo click");
       else console.log("not here");
@@ -72,19 +71,17 @@ function Game() {
       window.removeEventListener("mouseup", onMouseUp);
       window.removeEventListener("mousemove", onMouseMove);
     };
-  }, [waldoXCoordinates, waldoYCoordinates]);
+  }, [waldoCoordinates]);
 
   // Load Image
   // Load Waldo Coordinates
   useEffect(() => {
     if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
-      setWaldoXCoordinates(allWaldoCoordinates.goldRush.x);
-      setWaldoYCoordinates(allWaldoCoordinates.goldRush.y);
+      setWaldoCoordinates(allWaldoCoordinates.goldRush);
     } else if (location.pathname === images.HEDGE_MAZE.path) {
       setImgSrc(images.HEDGE_MAZE.src);
-      setWaldoXCoordinates(allWaldoCoordinates.hedgeMaze.x);
-      setWaldoYCoordinates(allWaldoCoordinates.hedgeMaze.y);
+      setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
     }
   }, []);
 
