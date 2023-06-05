@@ -4,7 +4,7 @@ import "../styles/game.scoped.css";
 import * as images from "../pages";
 
 // TODO: fetch this data from firebase
-const waldoCoordinates = {
+const allWaldoCoordinates = {
   hedgeMaze: { x: [415, 434], y: [166, 192] },
   goldRush: { x: [185, 207], y: [132, 191] },
 };
@@ -12,11 +12,15 @@ const waldoCoordinates = {
 function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
+  const [waldCoordinates, setWaldoCoordinates] = useState({});
 
   // Scroll Image by Dragging Mouse
   useEffect(() => {
     const element = document.querySelector("section");
     let pos = { top: 0, left: 0, x: 0, y: 0 };
+    // const isCorrect = false;
+
+    // function validateClickPosition(x, y) {}
 
     const onMouseMove = (e) => {
       e.preventDefault();
@@ -52,12 +56,15 @@ function Game() {
     };
   }, []);
 
-  // Load Image
+  // Load Image and Waldo Coordinates
   useEffect(() => {
-    if (location.pathname === images.GOLD_RUSH.path)
+    if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
-    else if (location.pathname === images.HEDGE_MAZE.path)
+      setWaldoCoordinates(allWaldoCoordinates.goldRush);
+    } else if (location.pathname === images.HEDGE_MAZE.path) {
       setImgSrc(images.HEDGE_MAZE.src);
+      setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
+    }
   }, []);
 
   return (
