@@ -5,8 +5,8 @@ import * as images from "../pages";
 
 // TODO: fetch this data from firebase
 const allWaldoCoordinates = {
-  hedgeMaze: { x: [415, 434], y: [166, 192] },
-  goldRush: { x: [185, 207], y: [132, 191] },
+  hedgeMaze: { x: [1369, 1389], y: [636, 664] },
+  goldRush: { x: [339, 364], y: [514, 575] },
 };
 
 function Game() {
