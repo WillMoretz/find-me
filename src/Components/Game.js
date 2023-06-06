@@ -34,6 +34,11 @@ function Game() {
       else console.log("not here");
     }
 
+    function setRelativePosition(e) {
+      const rect = e.target.getBoundingClientRect();
+      relativePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
     const onMouseMove = (e) => {
       e.preventDefault();
       const dx = e.clientX - pos.x;
@@ -54,9 +59,7 @@ function Game() {
         x: e.clientX,
         y: e.clientY,
       };
-
-      const rect = e.target.getBoundingClientRect();
-      relativePos = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      setRelativePosition(e);
 
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
