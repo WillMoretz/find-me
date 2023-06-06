@@ -20,18 +20,17 @@ function Game() {
     const element = document.querySelector("section");
     let pos = { top: 0, left: 0, x: 0, y: 0 };
     let relativePos = { x: 0, y: 0 };
-    // const isCorrect = false;
+    let isCorrect = false;
 
     function validateClickPosition() {
-      console.log("checking click...");
       if (
         relativePos.x >= waldoCoordinates.x[0] &&
         relativePos.x <= waldoCoordinates.x[1] &&
         relativePos.y >= waldoCoordinates.y[0] &&
         relativePos.y <= waldoCoordinates.y[1]
       )
-        console.log("waldo click");
-      else console.log("not here");
+        isCorrect = true;
+      else isCorrect = false;
     }
 
     function setRelativePosition(e) {
@@ -45,11 +44,17 @@ function Game() {
       const dy = e.clientY - pos.y;
       element.scrollTop = pos.top - dy;
       element.scrollLeft = pos.left - dx;
+
+      if (isCorrect) {
+        if (e.clientX !== pos.x || e.clientY !== pos.y) isCorrect = false;
+      }
     };
 
     const onMouseUp = () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
+
+      console.log(isCorrect);
     };
 
     const onMouseDown = (e) => {
@@ -59,11 +64,12 @@ function Game() {
         x: e.clientX,
         y: e.clientY,
       };
-      setRelativePosition(e);
 
       window.addEventListener("mousemove", onMouseMove);
       window.addEventListener("mouseup", onMouseUp);
       // console.log(`pictureX: ${relativePos.x}`, `pictureY: ${relativePos.y}`);
+
+      setRelativePosition(e);
       validateClickPosition();
     };
 
