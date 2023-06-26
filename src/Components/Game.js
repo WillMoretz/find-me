@@ -46,10 +46,6 @@ function Game() {
       const dy = e.clientY - pos.y;
       element.scrollTop = pos.top - dy;
       element.scrollLeft = pos.left - dx;
-
-      if (isCorrect) {
-        if (e.clientX !== pos.x || e.clientY !== pos.y) isCorrect = false;
-      }
     };
 
     const onMouseUp = () => {
