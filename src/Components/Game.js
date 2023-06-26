@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import GameOver from "./GameOver";
 import "../styles/game.scoped.css";
 import * as images from "../pages";
 
@@ -13,6 +14,7 @@ function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
   const [waldoCoordinates, setWaldoCoordinates] = useState({});
+  const [gameOver, setGameOver] = useState(false);
 
   // Scroll Image by Dragging Mouse
   // Determine whether user clicked on Waldo
@@ -54,7 +56,7 @@ function Game() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
 
-      console.log(isCorrect);
+      if (isCorrect) setGameOver(true);
     };
 
     const onMouseDown = (e) => {
@@ -105,6 +107,7 @@ function Game() {
       ) : (
         <div>loading image...</div>
       )}
+      {gameOver ? <GameOver/> : ""}
     </section>
   );
 }
