@@ -7,14 +7,14 @@ import "../styles/game-over.scoped.css";
 function GameOver() {
     const navigate = useNavigate();
 
-    function returnToHome() {
+    const returnToHome = () => {
         navigate("/");
     }
 
     return <>
         <div className="game-over-container">
             <div className="top-bar">
-                <img src={waldoHead} aria-hidden />
+                <img src={waldoHead} aria-hidden alt="" />
                 <h2>Found Me!</h2>
                 <button type="button" onClick={() => returnToHome()}>
                 ✕
