@@ -56,6 +56,8 @@ function Game() {
     };
 
     const onMouseDown = (e) => {
+      if (gameOver) return;
+
       pos = {
         left: element.scrollLeft,
         top: element.scrollTop,
