@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Overlay from "./Overlay";
@@ -22,7 +23,8 @@ function GameOver() {
             </div>
             <p>Well Done! You Found Waldo in X Seconds</p>
             <form>
-                <label htmlFor="name">Name:</label>
+                <h3>Submit Your Time</h3>
+                <label htmlFor="name">Name</label>
                 <input type="text" name="name" id="name" />
                 <button type="submit">Submit Time</button>
             </form>
