@@ -16,10 +16,16 @@ function GameOver() {
             <div className="top-bar">
                 <img src={waldoHead} aria-hidden alt="waldo's head" />
                 <h2>Found Me!</h2>
-                <button type="button" onClick={() => returnToHome()}>
+                <button className="return-button" type="button" onClick={() => returnToHome()}>
                 ✕
                 </button>
             </div>
+            <p>Well Done! You Found Waldo in X Seconds</p>
+            <form>
+                <label htmlFor="name">Name:</label>
+                <input type="text" name="name" id="name" />
+                <button type="submit">Submit Time</button>
+            </form>
         </div>
         <Overlay handleClick={returnToHome}/>
     </>
