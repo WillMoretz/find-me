@@ -14,7 +14,7 @@ function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
   const [waldoCoordinates, setWaldoCoordinates] = useState({});
-  const [gameOver, setGameOver] = useState(false);
+  const [gameOver, setGameOver] = useState(true);
 
   // Scroll Image by Dragging Mouse
   // Determine whether user clicked on Waldo

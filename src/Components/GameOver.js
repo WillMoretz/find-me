@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Overlay from "./Overlay";
 import waldoHead from "../img/waldo-head.jpg"
+import "../styles/game-over.scoped.css";
 
 function GameOver() {
     const navigate = useNavigate();
