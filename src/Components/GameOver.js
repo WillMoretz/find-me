@@ -14,7 +14,7 @@ function GameOver() {
     return <>
         <div className="game-over-container">
             <div className="top-bar">
-                <img src={waldoHead} aria-hidden alt="" />
+                <img src={waldoHead} aria-hidden alt="waldo's head" />
                 <h2>Found Me!</h2>
                 <button type="button" onClick={() => returnToHome()}>
                 ✕
