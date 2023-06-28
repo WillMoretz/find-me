@@ -1,36 +1,49 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Overlay from "./Overlay";
-import waldoHead from "../img/waldo-head.jpg"
+import waldoHead from "../img/waldo-head.jpg";
 import "../styles/game-over.scoped.css";
 
 function GameOver() {
-    const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const navigate = useNavigate();
 
-    const returnToHome = () => {
-        navigate("/");
-    }
+  const returnToHome = () => {
+    navigate("/");
+  };
 
-    return <>
-        <div className="game-over-container">
-            <div className="top-bar">
-                <img src={waldoHead} aria-hidden alt="waldo's head" />
-                <h2>Found Me!</h2>
-                <button className="return-button" type="button" onClick={() => returnToHome()}>
-                ✕
-                </button>
-            </div>
-            <p>Well Done! You Found Waldo in X Seconds</p>
-            <form>
-                <h3>Submit Your Time</h3>
-                <label htmlFor="name">Name</label>
-                <input type="text" name="name" id="name" />
-                <button type="submit">Submit Time</button>
-            </form>
+  function handleSubmit() {
+    console.log(name);
+  }
+
+  return (
+    <>
+      <div className="game-over-container">
+        <div className="top-bar">
+          <img src={waldoHead} aria-hidden alt="waldo's head" />
+          <h2>Found Me!</h2>
+          <Link to="/">✕</Link>
         </div>
-        <Overlay handleClick={returnToHome}/>
+        <p>Well Done! You Found Waldo in X Seconds</p>
+        <form>
+          <h3>Submit Your Time</h3>
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button type="button" onClick={() => handleSubmit()}>
+            Submit Time
+          </button>
+        </form>
+      </div>
+      <Overlay handleClick={returnToHome} />
     </>
+  );
 }
 
-export default GameOver
+export default GameOver;
