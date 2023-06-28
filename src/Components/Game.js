@@ -105,7 +105,7 @@ function Game() {
       ) : (
         <div>loading image...</div>
       )}
-      {gameOver ? <GameOver/> : ""}
+      {gameOver ? <GameOver /> : ""}
     </section>
   );
 }
