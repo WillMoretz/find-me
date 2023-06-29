@@ -68,3 +68,19 @@ form {
 input {
   margin: 0 0 0.5rem 0;
 }
+
+button {
+  padding: 0.2em 0.4em 0.2em 0.4em;
+  font-size: 1.25rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0.3em;
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 250ms ease-in-out, filter 250ms ease-in-out;
+}
+
+button:hover {
+  box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
+  filter: contrast(70%);
+}
