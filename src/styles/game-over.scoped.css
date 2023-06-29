@@ -40,6 +40,11 @@ a {
   font-family: 900;
   position: relative;
   bottom: 3px;
+  transition: color 300ms ease-in-out;
+}
+
+a:hover {
+  color: firebrick;
 }
 
 p {
