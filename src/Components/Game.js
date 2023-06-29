@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import GameOver from "./GameOver";
 import "../styles/game.scoped.css";
 import * as images from "../pages";
+import { start, stop } from "../timer";
 
 // TODO: fetch this data from firebase
 const allWaldoCoordinates = {
@@ -14,7 +15,16 @@ function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
   const [waldoCoordinates, setWaldoCoordinates] = useState({});
-  const [gameOver, setGameOver] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
+
+  // function startGame() {
+
+  // }
+
+  function endGame() {
+    setGameOver(true);
+    console.log(stop());
+  }
 
   // Scroll Image by Dragging Mouse
   // Determine whether user clicked on Waldo
@@ -52,7 +62,7 @@ function Game() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
 
-      if (isCorrect) setGameOver(true);
+      if (isCorrect) endGame();
     };
 
     const onMouseDown = (e) => {
@@ -85,6 +95,7 @@ function Game() {
   // Load Image
   // Load Waldo Coordinates
   useEffect(() => {
+    start();
     if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
       setWaldoCoordinates(allWaldoCoordinates.goldRush);
