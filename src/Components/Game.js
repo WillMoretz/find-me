@@ -18,10 +18,26 @@ function Game() {
   const [gameOver, setGameOver] = useState(false);
   const [time, setTime] = useState(0);
 
-  // function startGame() {
+  // Load Image
+  // Load Waldo Coordinates
+  // Start Timer
+  function startGame() {
+    start();
+    if (location.pathname === images.GOLD_RUSH.path) {
+      setImgSrc(images.GOLD_RUSH.src);
+      setWaldoCoordinates(allWaldoCoordinates.goldRush);
+    } else if (location.pathname === images.HEDGE_MAZE.path) {
+      setImgSrc(images.HEDGE_MAZE.src);
+      setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
+    }
+  }
 
-  // }
+  useEffect(() => {
+    startGame();
+  }, []);
 
+  // Display Game Over Component
+  // Stop Timer
   function endGame() {
     setGameOver(true);
     setTime(stop());
@@ -92,19 +108,6 @@ function Game() {
       window.removeEventListener("mousemove", onMouseMove);
     };
   }, [waldoCoordinates]);
-
-  // Load Image
-  // Load Waldo Coordinates
-  useEffect(() => {
-    start();
-    if (location.pathname === images.GOLD_RUSH.path) {
-      setImgSrc(images.GOLD_RUSH.src);
-      setWaldoCoordinates(allWaldoCoordinates.goldRush);
-    } else if (location.pathname === images.HEDGE_MAZE.path) {
-      setImgSrc(images.HEDGE_MAZE.src);
-      setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
-    }
-  }, []);
 
   return (
     <section>
