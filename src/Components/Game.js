@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import GameOver from "./GameOver";
+import GameStart from "./GameStart";
 import "../styles/game.scoped.css";
 import * as images from "../pages";
 import { start, stop } from "../timer";
@@ -17,6 +18,7 @@ function Game() {
   const [waldoCoordinates, setWaldoCoordinates] = useState({});
   const [gameOver, setGameOver] = useState(false);
   const [time, setTime] = useState(0);
+  const [shouldDisplayStartPopup, setShouldDisplayStartPopup] = useState(true);
 
   // Load Image
   // Load Waldo Coordinates
@@ -31,10 +33,6 @@ function Game() {
       setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
     }
   }
-
-  useEffect(() => {
-    startGame();
-  }, []);
 
   // Display Game Over Component
   // Stop Timer
@@ -121,6 +119,7 @@ function Game() {
         <div>loading image...</div>
       )}
       {gameOver ? <GameOver time={time} /> : ""}
+      {shouldDisplayStartPopup ? <GameStart /> : ""}
     </section>
   );
 }
