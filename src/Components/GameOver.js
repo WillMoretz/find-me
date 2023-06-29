@@ -5,7 +5,9 @@ import Overlay from "./Overlay";
 import waldoHead from "../img/waldo-head.jpg";
 import "../styles/game-over.scoped.css";
 
-function GameOver() {
+function GameOver(props) {
+  const { time } = props;
+
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
@@ -25,7 +27,7 @@ function GameOver() {
           <h2>Found Me!</h2>
           <Link to="/">✕</Link>
         </div>
-        <p>Well Done! You Found Waldo in X Seconds</p>
+        <p>{`Well Done! You Found Waldo in ${time} Seconds`}</p>
         <form>
           <h3>Submit Your Time</h3>
           <label htmlFor="name">Name</label>
