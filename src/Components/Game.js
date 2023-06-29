@@ -15,24 +15,32 @@ const allWaldoCoordinates = {
 function Game() {
   const location = useLocation();
   const [imgSrc, setImgSrc] = useState(undefined);
+  const [imgName, setImgName] = useState("loading...");
   const [waldoCoordinates, setWaldoCoordinates] = useState({});
   const [gameOver, setGameOver] = useState(false);
   const [time, setTime] = useState(0);
-  const [shouldDisplayStartPopup, setShouldDisplayStartPopup] = useState(true);
+  const [inPreGame, setInPreGame] = useState(true);
 
   // Load Image
   // Load Waldo Coordinates
-  // Start Timer
-  function startGame() {
-    start();
+  useEffect(() => {
     if (location.pathname === images.GOLD_RUSH.path) {
       setImgSrc(images.GOLD_RUSH.src);
+      setImgName(images.GOLD_RUSH.name);
       setWaldoCoordinates(allWaldoCoordinates.goldRush);
     } else if (location.pathname === images.HEDGE_MAZE.path) {
       setImgSrc(images.HEDGE_MAZE.src);
+      setImgName(images.HEDGE_MAZE.name);
       setWaldoCoordinates(allWaldoCoordinates.hedgeMaze);
     }
-  }
+  }, []);
+
+  // Start Timer
+  // Hide Game Start Component
+  const startGame = () => {
+    setInPreGame(false);
+    start();
+  };
 
   // Display Game Over Component
   // Stop Timer
@@ -119,7 +127,7 @@ function Game() {
         <div>loading image...</div>
       )}
       {gameOver ? <GameOver time={time} /> : ""}
-      {shouldDisplayStartPopup ? <GameStart /> : ""}
+      {inPreGame ? <GameStart imgName={imgName} buttonEvent={startGame} /> : ""}
     </section>
   );
 }
