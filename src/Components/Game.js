@@ -16,6 +16,7 @@ function Game() {
   const [imgSrc, setImgSrc] = useState(undefined);
   const [waldoCoordinates, setWaldoCoordinates] = useState({});
   const [gameOver, setGameOver] = useState(false);
+  const [time, setTime] = useState(0);
 
   // function startGame() {
 
@@ -23,7 +24,7 @@ function Game() {
 
   function endGame() {
     setGameOver(true);
-    console.log(stop());
+    setTime(stop());
   }
 
   // Scroll Image by Dragging Mouse
@@ -116,7 +117,7 @@ function Game() {
       ) : (
         <div>loading image...</div>
       )}
-      {gameOver ? <GameOver /> : ""}
+      {gameOver ? <GameOver time={time} /> : ""}
     </section>
   );
 }
